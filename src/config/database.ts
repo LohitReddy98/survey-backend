@@ -1,4 +1,4 @@
-// src/config/database.ts
+
 import 'dotenv/config';
 
 export const config = {

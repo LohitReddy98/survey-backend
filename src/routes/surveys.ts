@@ -1,4 +1,4 @@
-// src/routes/surveys.ts
+
 import express from 'express';
 import {
   createSurvey,

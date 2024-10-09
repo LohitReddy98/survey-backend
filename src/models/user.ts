@@ -1,4 +1,4 @@
-// src/models/user.ts
+
 import { DataTypes, Model, Sequelize } from 'sequelize';
 
 export default (sequelize: Sequelize) => {
@@ -27,7 +27,7 @@ export default (sequelize: Sequelize) => {
       },
       role: {
         type: DataTypes.STRING(20),
-        allowNull: false, // 'patient' or 'doctor'
+        allowNull: false, 
       },
     },
     {

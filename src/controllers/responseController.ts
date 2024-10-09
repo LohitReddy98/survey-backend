@@ -1,4 +1,4 @@
-// src/controllers/responseController.ts
+
 import { Request, Response } from 'express';
 import db from '../models';
 import { AuthenticatedRequest } from '../types';
@@ -11,7 +11,7 @@ export const submitResponse = async (
   const { response } = req.body;
   console.log({ surveyId, patientId: req.user.userId })
   try {
-    // Check if survey is assigned to patient
+    
     const assignment = await db.SurveyAssignment.findOne({
       where: { surveyId:parseInt(surveyId), patientId: req.user.userId },
     });
@@ -21,7 +21,7 @@ export const submitResponse = async (
         .json({ error: 'Survey not assigned to this patient' });
     }
 
-    // Check if response already exists
+    
     const existingResponse = await db.SurveyResponse.findOne({
       where: { surveyId, patientId: req.user.userId },
     });

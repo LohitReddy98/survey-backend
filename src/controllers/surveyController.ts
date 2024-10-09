@@ -1,4 +1,4 @@
-// src/controllers/surveyController.ts
+
 import { Request, Response } from 'express';
 import db from '../models';
 import { AuthenticatedRequest } from '../types';
@@ -30,7 +30,11 @@ export const createSurvey = async (req: AuthenticatedRequest, res: Response) => 
 
 export const getSurveys = async (req: AuthenticatedRequest, res: Response) => {
   try {
+    const doctorId = req?.user?.userId;
     const surveys = await db.Survey.findAll({
+      where: {
+        createdBy: doctorId,
+      },
       include: [
         {
           model: db.SurveyQuestion,
@@ -69,10 +73,10 @@ export const updateSurvey = async (req: AuthenticatedRequest, res: Response) => 
 
     await survey.update({ title, description });
 
-    // Delete existing questions
+    
     await db.SurveyQuestion.destroy({ where: { surveyId: survey.id } });
 
-    // Add updated questions
+    
     for (const question of questions) {
       await db.SurveyQuestion.create({
         surveyId: survey.id,

@@ -1,4 +1,4 @@
-// src/routes/responses.ts
+
 import express from 'express';
 import {
   submitResponse,

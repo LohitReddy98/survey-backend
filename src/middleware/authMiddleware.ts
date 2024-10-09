@@ -1,4 +1,4 @@
-// src/middleware/authMiddleware.ts
+
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -12,7 +12,7 @@ export const authenticate = (
   next: NextFunction
 ) => {
   const authHeader = req.headers['authorization'] || req.headers['Authorization'];
-  const token = authHeader && (authHeader as string).split(' ')[1]; // Bearer TOKEN
+  const token = authHeader && (authHeader as string).split(' ')[1]; 
   if (!token) return res.status(401).json({ error: 'Unauthorized' });
   jwt.verify(token, process.env.JWT_SECRET || 'secret', (err, user) => {
     if (err) return res.status(403).json({ error: 'Forbidden here' });

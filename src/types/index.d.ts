@@ -1,4 +1,4 @@
-// src/types/index.d.ts
+
 import { Request } from 'express';
 
 export interface AuthenticatedRequest extends Request {

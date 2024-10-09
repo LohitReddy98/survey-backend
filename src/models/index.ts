@@ -1,4 +1,4 @@
-// src/models/index.ts
+
 import { Sequelize } from 'sequelize';
 import { config } from '../config/database';
 
@@ -12,7 +12,7 @@ export const sequelize = new Sequelize(
   dbConfig
 );
 
-// Import models
+
 import userModel from './user';
 import patientModel from './patient';
 import doctorModel from './doctor';
@@ -31,7 +31,7 @@ const db = {
   SurveyResponse: surveyResponseModel(sequelize),
 };
 
-// Define associations
+
 db.User.hasOne(db.Patient, { foreignKey: 'id' });
 db.User.hasOne(db.Doctor, { foreignKey: 'id' });
 

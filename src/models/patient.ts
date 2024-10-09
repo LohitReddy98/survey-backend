@@ -1,4 +1,4 @@
-// src/models/patient.ts
+
 import { DataTypes, Model, Sequelize } from 'sequelize';
 
 export default (sequelize: Sequelize) => {
